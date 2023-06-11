@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   return (
     <>
-      <div className="flex justify-between w-full bg-orange-600 p-4">
+      <div className="flex justify-between w-full bg-orange-600 p-4 text-white">
         <Link href={'/'} className="font-semibold">Sapataria Paraná</Link>
         <ul className="sm:flex hidden justify-between gap-10 font-medium">
           <Link className="hover:text-black" href={'/'} >Início</Link>
