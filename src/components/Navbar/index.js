@@ -16,15 +16,15 @@ export default function Navbar() {
         </ul>
         {/* Futuro menu */}
         <div className="sm:hidden">
-          <button onClick={() => setIsOpenMenu(!isOpenMenu)}>
-            <i className="fi fi-br-menu-burger"></i>
+          <button className="w-5 h-5" onClick={() => setIsOpenMenu(!isOpenMenu)}>
+            <img src="/images/menu-hamburguer.png" alt="ícone menu hamburguer" />
           </button>
         </div>
       </div >
       <div className={`fixed sm:hidden top-0  h-full w-full bg-black/40 font-semibold  ${isOpenMenu ? 'backdrop-blur-sm bg-black/40 z-10' : 'backdrop-blur-0 bg-black/0 -z-10'} transition-all duration-300`} onClick={() => setIsOpenMenu(!isOpenMenu)}>
       </div>
-      <div className={`absolute w-full text-left flex flex-col gap-2 p-4 rounded-b-xl transition-all ease-in-out duration-500 ${isOpenMenu ? '-translate-y-14' : '-translate-y-72'} z-50 bg-white text-slate-900 `}>
-        <i className="fixed cursor-pointer self-end transition-all duration-300 hover:text-orange-600 fi fi-br-cross" onClick={() => setIsOpenMenu(false)}></i>
+      <div className={`absolute w-full text-left flex flex-col gap-2 p-4 rounded-b-xl transition-all ease-in-out duration-500 ${isOpenMenu ? '-translate-y-16' : '-translate-y-72'} z-50 bg-white text-slate-900 `}>
+        <img src="/images/cross.png" alt="icone fechar" className="fixed cursor-pointer self-end w-5" onClick={() => setIsOpenMenu(false)} />
         <p className="w-full pb-1 pt-3 text-xl font-semibold text-black">
           Navegação
         </p>
