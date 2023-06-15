@@ -11,6 +11,7 @@ export default function Navbar() {
         <Link href={'/'} className="font-semibold">Sapataria Paraná</Link>
         <ul className="sm:flex hidden justify-between gap-10 font-medium">
           <Link className="hover:text-black" href={'/'} >Início</Link>
+          <Link className="hover:text-black" href={'/loja'} >Loja</Link>
           <Link className="hover:text-black" href={'/sobre'} >Sobre</Link>
           <Link className="hover:text-black" href={'/orcamento'} >Orçamento</Link>
         </ul>
@@ -29,6 +30,7 @@ export default function Navbar() {
           Navegação
         </p>
         <Link className="transition-all duration-300 px-1 hover:text-orange-600 " href={'/'} onClick={() => setIsOpenMenu(!isOpenMenu)}>Início</Link>
+        <Link className="transition-all duration-300 px-1 hover:text-orange-600 " href={'/loja'} onClick={() => setIsOpenMenu(!isOpenMenu)}>Loja</Link>
         <Link className="transition-all duration-300 px-1 hover:text-orange-600 " href={'/sobre'} onClick={() => setIsOpenMenu(!isOpenMenu)} >Sobre</Link>
         <Link className="transition-all duration-300 hover:text-orange-600 px-1  mb-2 " href={'/orcamento'} onClick={() => setIsOpenMenu(!isOpenMenu)} >Orçamento</Link>
       </div>

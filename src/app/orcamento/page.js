@@ -32,44 +32,6 @@ export default function orcamento() {
     "Reparo",
   ]
 
-  const buscaCep = async (cep) => {
-
-    let cepOnlyNumbers = cep.replace(/\D/g, "")
-    setEndereco({
-      ...endereco, cep: cepOnlyNumbers
-    })
-
-    if (cep.length == 8) {
-      try {
-        await fetch(`https://viacep.com.br/ws/${cepOnlyNumbers}/json/`)
-          .then(response => {
-            response.json()
-              .then(data => {
-                if (!data.erro) {
-                  setCepError(false)
-                  setEndereco({
-                    cidade: data.localidade,
-                    estado: data.uf,
-                    rua: data.logradouro,
-                    bairro: data.bairro,
-                  })
-                } else {
-                  setCepError(true)
-                  setEndereco({
-                    cidade: '',
-                    estado: '',
-                    rua: '',
-                    bairro: '',
-                  })
-                }
-              })
-          }).catch(e => console.log(e))
-      }
-      catch {
-        console.log('cep não encontrado')
-      }
-    }
-  }
 
   return (
     <MainPage>
@@ -79,19 +41,6 @@ export default function orcamento() {
         <p className="text-xl mt-12 font-semibold">Informações pessoais</p>
         <Input type='text' title='Nome' placeholder='Nome Sobrenome' description='Nome completo' required={true} />
         <Input type='email' title='Email' placeholder='email@email.com' description='Email' required={true} />
-
-        <p className="text-xl mt-12 font-semibold">Endereço</p>
-        <div className="flex gap-4 m-0">
-          <Input type='text' placeholder='00000-000' description='CEP' required={true} maxLength={8} onInput={e => buscaCep(e)} value={endereco.cep} error={cepError} />
-          <Input type='text' placeholder='União da Vitória' description={'Cidade'} required={true} value={endereco.cidade} onInput={e => setEndereco({ ...endereco, cidade: e })} />
-          <Input type='text' placeholder='Paraná' description={'Estado'} value={endereco.estado} required={true} onInput={e => setEndereco({ ...endereco, estado: e })} margin='' />
-        </div>
-        <div className="flex sm:flex-row flex-col gap-4 m-0">
-          <Input type='text' placeholder='Rua Dom Pedro II' description="Rua" required={true} value={endereco.rua} margin={'my-0'} onInput={e => setEndereco({ ...endereco, rua: e })} />
-          <Input type='number' placeholder='703' description="Número" required={true} margin={'my-0'} />
-          <Input type='text' placeholder='Centro' description={'Bairro'} required={true} value={endereco.bairro} onInput={e => setEndereco({ ...endereco, bairro: e })} margin={'my-0'} />
-        </div>
-        <Input type='text' placeholder='ex: apt.24, Casa A' description={'Complemento'} required={false} />
 
         <p className="text-xl mt-12 font-semibold">Serviço</p>
         <Dropdown description='Tipo de serviço' required={true}>
