@@ -46,24 +46,29 @@ export default function Loja() {
         },
     ]
 
+    const [carrinho, setCarrinho] = useState(JSON.parse(Cookies.get('carrinho')))
+    // const [carrinho, setCarrinho] = useState([])
 
-    const [carrinho, setCarrinho] = useState([])
+    const handleRemoveFromCart = (item) => {
+        console.log(item)
+        let newCarrinho = carrinho
+        newCarrinho.forEach((carrinhoItem, index, object) => {
+            if (carrinhoItem == item) {
+                newCarrinho.splice(index, 1)
+            }
+        });
 
-    const handleAddToCart = (sapato) => {
-        setCarrinho([...carrinho, sapato])
+        setCarrinho(newCarrinho)
+        Cookies.set('carrinho', JSON.stringify(newCarrinho))
     }
-
-    useEffect(() => {
-        Cookies.set('carrinho', JSON.stringify(carrinho))
-        console.log(JSON.parse(Cookies.get('carrinho')))
-    }, [carrinho])
 
     return (
         <MainPage>
+            <h1>CARRINHO:</h1>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 my-16 max-w-4xl">
                 {
-                    sapatos.map((sapato, index) =>
-                        <ProductCard key={`${sapato.nome}-${index}`} sapato={sapato} addToCart={(sapato) => handleAddToCart(sapato)} />
+                    carrinho.map((item, index) =>
+                        <ProductCard key={`${item.nome}-${index}`} sapato={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
                     )
                 }
 
