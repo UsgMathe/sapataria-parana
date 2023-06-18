@@ -2,11 +2,12 @@
 
 import Button from "@/components/Button";
 import MainPage from "@/components/MainPage";
-import ProductCard from "@/components/ProductCard";
+import ProductCart from "@/components/ProductCart";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
 export default function Loja() {
+
     const sapatos = [
         {
             nome: "Sapato Brogue Mazuque",
@@ -46,8 +47,8 @@ export default function Loja() {
         },
     ]
 
-    const [carrinho, setCarrinho] = useState(JSON.parse(Cookies.get('carrinho')))
-    // const [carrinho, setCarrinho] = useState([])
+    const [carrinho, setCarrinho] = useState(JSON.parse(Cookies.get('carrinho')) ? JSON.parse(Cookies.get('carrinho')) : [])
+
 
     const handleRemoveFromCart = (item) => {
         console.log(item)
@@ -56,19 +57,25 @@ export default function Loja() {
             if (carrinhoItem == item) {
                 newCarrinho.splice(index, 1)
             }
+
         });
 
-        setCarrinho(newCarrinho)
         Cookies.set('carrinho', JSON.stringify(newCarrinho))
+        setCarrinho(JSON.parse(Cookies.get('carrinho')))
     }
+
+    useEffect(() => {
+        console.log(carrinho)
+    }, carrinho)
 
     return (
         <MainPage>
             <h1>CARRINHO:</h1>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 my-16 max-w-4xl">
+            <div className="flex flex-col sm:grid-cols-3 md:grid-cols-4 gap-4 my-16 max-w-4xl">
                 {
+                    carrinho.length > 0 &&
                     carrinho.map((item, index) =>
-                        <ProductCard key={`${item.nome}-${index}`} sapato={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
+                        <ProductCart key={`${item.nome}-${index}`} sapato={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
                     )
                 }
 

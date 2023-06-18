@@ -47,7 +47,7 @@ export default function Loja() {
     ]
 
 
-    const [carrinho, setCarrinho] = useState([])
+    const [carrinho, setCarrinho] = useState(JSON.parse(Cookies.get('carrinho')) ? JSON.parse(Cookies.get('carrinho')) : [])
 
     const handleAddToCart = (sapato) => {
         setCarrinho([...carrinho, sapato])
