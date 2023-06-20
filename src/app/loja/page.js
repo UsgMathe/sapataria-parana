@@ -47,31 +47,36 @@ export default function Loja() {
     ]
 
 
-    const [carrinho, setCarrinho] = useState(JSON.parse(Cookies.get('carrinho')) ? JSON.parse(Cookies.get('carrinho')) : [])
+    const [carrinho, setCarrinho] = useState([])
 
     const handleAddToCart = (sapato) => {
+        console.log(carrinho)
         setCarrinho([...carrinho, sapato])
     }
 
     useEffect(() => {
-        Cookies.set('carrinho', JSON.stringify(carrinho))
-        console.log(JSON.parse(Cookies.get('carrinho')))
+        carrinho && Cookies.set('carrinho', JSON.stringify(carrinho))
+        
     }, [carrinho])
 
     return (
         <MainPage>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 my-16 max-w-4xl">
+            <header className="my-16  text-center">
+                <h1 className="text-7xl font-semibold">
+                    Loja    
+                </h1>
+                <h3 className="py-4 text-4xl text-center font-light w-full">
+                    
+                </h3>
+            </header>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-16 max-w-4xl">
                 {
                     sapatos.map((sapato, index) =>
                         <ProductCard key={`${sapato.nome}-${index}`} sapato={sapato} addToCart={(sapato) => handleAddToCart(sapato)} />
                     )
                 }
-
-                {/* <div className="rounded-lg">
-                    <img src={sapatos[2].imagem}
-                        className="rounded-lg"   
-                    />
-                </div> */}
+                
             </div>
         </MainPage>
     )

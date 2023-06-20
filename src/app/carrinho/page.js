@@ -47,7 +47,9 @@ export default function Loja() {
         },
     ]
 
-    const [carrinho, setCarrinho] = useState(JSON.parse(Cookies.get('carrinho')) ? JSON.parse(Cookies.get('carrinho')) : [])
+    const [carrinho, setCarrinho] = useState(
+        Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
+    )
 
 
     const handleRemoveFromCart = (item) => {
@@ -70,7 +72,15 @@ export default function Loja() {
 
     return (
         <MainPage>
-            <h1>CARRINHO:</h1>
+             <header className="my-16  text-center">
+                <h1 className="text-7xl font-semibold">
+                    Carrinho   
+                </h1>
+                <h3 className="py-4 text-4xl text-center font-light w-full">
+                    
+                </h3>
+            </header>
+            
             <div className="flex flex-col sm:grid-cols-3 md:grid-cols-4 gap-4 my-16 max-w-4xl">
                 {
                     carrinho.length > 0 &&

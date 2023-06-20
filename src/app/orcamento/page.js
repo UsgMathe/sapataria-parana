@@ -27,9 +27,15 @@ export default function orcamento() {
 
   const options = [
     "Conserto",
+    "Reparo",
     "Colagem",
     "Costura",
-    "Reparo",
+    "Solado",
+    "Pintura",
+    "Recape",
+    "Sintas",
+    "Troca de Zíper",
+    "Outro...",
   ]
 
 
