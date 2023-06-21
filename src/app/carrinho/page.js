@@ -8,49 +8,9 @@ import { useEffect, useState } from "react";
 
 export default function Loja() {
 
-    const sapatos = [
-        {
-            nome: "Sapato Brogue Mazuque",
-            imagem: "/images/sapatos/sapato-brogue-mazuque.jpg",
-            descricao: "Arremate seus visuais com muita elegância com este sapato Brogue. Confeccionado em couro, possui fino acabamento com recortes e perfuros característicos deste tipo de modelo. Conta também, com palmilha extra macia e cadarço para melhor ajuste. Sofisticado e confortável, é o sapato ideal para homens de bom gosto que prezam pela elegância e bem estar. Você pode combinar com calça alfaiataria ou sarja",
-            preco: "R$52.99"
-        },
-        {
-            nome: "Sapato de couro verde",
-            imagem: "/images/sapatos/Sapatos_de_couro_verde.jpg",
-            descricao: "",
-            preco: "R$30.99"
-        },
-        {
-            nome: "Sapato New Tradicional preto - 15465",
-            imagem: "/images/sapatos/sapatoterapia-new-tradicional-preto-21421.jpg",
-            descricao: "",
-            preco: "R$98.85"
-        },
-        {
-            nome: "Sapato New Tradicional - 21421",
-            imagem: "/images/sapatos/sapato-brogue-mazuque.jpg",
-            descricao: "",
-            preco: "R$72.50"
-        },
-        {
-            nome: "Sapato de couro",
-            imagem: "/images/sapatos/Sapatos_de_couro_verde.jpg",
-            descricao: "",
-            preco: "R$30.99"
-        },
-        {
-            nome: "Sapato brogue mazuque - 21421",
-            imagem: "/images/sapatos/sapato-brogue-mazuque.jpg",
-            descricao: "",
-            preco: "R$72.50"
-        },
-    ]
-
     const [carrinho, setCarrinho] = useState(
         Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
     )
-
 
     const handleRemoveFromCart = (item) => {
         console.log(item)
@@ -72,29 +32,29 @@ export default function Loja() {
 
     return (
         <MainPage>
-             <header className="my-16  text-center">
+            <header className="my-16  text-center">
                 <h1 className="text-7xl font-semibold">
-                    Carrinho   
+                    Carrinho
                 </h1>
                 <h3 className="py-4 text-4xl text-center font-light w-full">
-                    
+
                 </h3>
             </header>
-            
-            <div className="flex flex-col sm:grid-cols-3 md:grid-cols-4 gap-4 my-16 max-w-4xl">
+
+            <div className="flex flex-col justify-center items-center gap-4">
                 {
                     carrinho.length > 0 &&
                     carrinho.map((item, index) =>
                         <ProductCart key={`${item.nome}-${index}`} sapato={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
                     )
                 }
+            </div>
 
-                {/* <div className="rounded-lg">
+            {/* <div className="rounded-lg">
                     <img src={sapatos[2].imagem}
                         className="rounded-lg"   
                     />
                 </div> */}
-            </div>
         </MainPage>
     )
 }

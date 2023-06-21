@@ -47,7 +47,9 @@ export default function Loja() {
     ]
 
 
-    const [carrinho, setCarrinho] = useState([])
+    const [carrinho, setCarrinho] = useState(
+        Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
+    )
 
     const handleAddToCart = (sapato) => {
         console.log(carrinho)
@@ -56,27 +58,27 @@ export default function Loja() {
 
     useEffect(() => {
         carrinho && Cookies.set('carrinho', JSON.stringify(carrinho))
-        
+
     }, [carrinho])
 
     return (
         <MainPage>
             <header className="my-16  text-center">
                 <h1 className="text-7xl font-semibold">
-                    Loja    
+                    Loja
                 </h1>
                 <h3 className="py-4 text-4xl text-center font-light w-full">
-                    
+
                 </h3>
             </header>
-            
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-16 max-w-4xl">
                 {
                     sapatos.map((sapato, index) =>
                         <ProductCard key={`${sapato.nome}-${index}`} sapato={sapato} addToCart={(sapato) => handleAddToCart(sapato)} />
                     )
                 }
-                
+
             </div>
         </MainPage>
     )
