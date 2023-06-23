@@ -81,9 +81,7 @@ export default function Home() {
           <img src={bgPhoto} alt="" className="object-cover w-full h-full animate-[pulse_6s_infinite]" />
         }
       </div>
-      <header className="flex flex-col items-center mt-12 cursor-pointer" onClick={() => {
-        setRandomPhoto(photoList[Math.floor(Math.random() * photoList.length) - 1])
-      }}>
+      <header className="flex flex-col items-center mt-12 cursor-pointer">
         <h1 className=" text-4xl mb-2 font-semibold">Sapataria Paraná</h1>
         <h2 className="">Consertos e Reparos de Sapatos em Geral</h2>
       </header>
