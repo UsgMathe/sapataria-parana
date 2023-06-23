@@ -6,6 +6,9 @@ import Input from "@/components/Input";
 import MainPage from "@/components/MainPage";
 import { useState } from "react";
 
+import { BiMoneyWithdraw } from 'react-icons/bi'
+
+
 export default function orcamento() {
 
   const [endereco, setEndereco] = useState({
@@ -26,14 +29,13 @@ export default function orcamento() {
   }
 
   const options = [
-    "Conserto",
-    "Reparo",
     "Colagem",
+    "Conserto",
     "Costura",
-    "Solado",
     "Pintura",
     "Recape",
-    "Sintas",
+    "Reparo",
+    "Solado",
     "Troca de Zíper",
     "Outro...",
   ]
@@ -41,7 +43,16 @@ export default function orcamento() {
 
   return (
     <MainPage>
-      <form onSubmit={e => handleSubmit(e)} className="w-full max-w-3xl p-6 rounded-lg bg-white text-gray-700 my-10">
+      <header className="my-12  text-center">
+        <h1 className="text-7xl font-semibold px-4">
+          <BiMoneyWithdraw className="m-auto text-8xl my-2" />
+          Orçamento
+        </h1>
+        <h3 className="py-4 text-4xl text-center font-light w-full">
+
+        </h3>
+      </header>
+      <form onSubmit={e => handleSubmit(e)} className="w-full max-w-3xl px-6 py-14 rounded-lg bg-white text-gray-700">
         <h2 className="py-4 w-full text-center text-3xl font-semibold">Solicite um orçamento</h2>
 
         <p className="text-xl mt-12 font-semibold">Informações pessoais</p>

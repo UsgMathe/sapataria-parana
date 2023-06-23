@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 export default function Home() {
 
   const [randomPhoto, setRandomPhoto] = useState()
-  const [bgPhoto, setBgPhoto] = useState(true)
+
+  const [bgPhoto, setBgPhoto] = useState('/images/fotos/sapataria-frente.jpeg')
+  const [isBgPhoto, setIsBgPhoto] = useState(true)
 
   let photoList = []
 
@@ -44,7 +46,7 @@ export default function Home() {
   }, [])
 
   const randomizePhoto = () => {
-
+    setIsBgPhoto(true)
     if (photoList.length > 0) {
       setRandomPhoto(photoList[Math.floor(Math.random() * photoList.length) - 1]);
     }
@@ -59,27 +61,29 @@ export default function Home() {
 
   return (
     <MainPage>
-      <div className="absolute -z-10 blur-sm w-screen h-44" onClick={() => { console.log("SAJDLKAS") }}>
+      <div className="absolute -z-10 blur-sm w-screen h-44">
         {
           photoList && randomPhoto &&
           <img key={randomPhoto.src} src={randomPhoto.src}
-            onLoadStart={() => {
-              setBgPhoto(true)
-            }}
             onLoad={() => {
-              setBgPhoto(false)
+              setIsBgPhoto(false)
+              setBgPhoto(randomPhoto.src)
+              console.log('load')
             }}
-            className={`object-cover w-full h-full animate-[pulse_6s_infinite] transition-all duration-700`}
+
+            className={`${isBgPhoto ** 'hidden'} object-cover w-full h-full animate-[pulse_6s_infinite] transition-all duration-700`}
           />
         }
       </div>
       <div className="absolute -z-20 blur-sm w-screen h-44">
         {
-          bgPhoto &&
-          <img src={"/images/fotos/sapataria-frente.jpeg"} alt="" className="object-cover w-full h-full animate-[pulse_6s_infinite]" />
+          isBgPhoto &&
+          <img src={bgPhoto} alt="" className="object-cover w-full h-full animate-[pulse_6s_infinite]" />
         }
       </div>
-      <header className="flex flex-col items-center mt-12">
+      <header className="flex flex-col items-center mt-12 cursor-pointer" onClick={() => {
+        setRandomPhoto(photoList[Math.floor(Math.random() * photoList.length) - 1])
+      }}>
         <h1 className=" text-4xl mb-2 font-semibold">Sapataria Paraná</h1>
         <h2 className="">Consertos e Reparos de Sapatos em Geral</h2>
       </header>

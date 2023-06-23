@@ -6,6 +6,8 @@ import ProductCart from "@/components/ProductCart";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
+import { BiCart } from "react-icons/bi"
+
 export default function Loja() {
 
     const [carrinho, setCarrinho] = useState(
@@ -34,6 +36,7 @@ export default function Loja() {
         <MainPage>
             <header className="my-16  text-center">
                 <h1 className="text-7xl font-semibold">
+                    <BiCart className="m-auto text-8xl my-2" />
                     Carrinho
                 </h1>
                 <h3 className="py-4 text-4xl text-center font-light w-full">
