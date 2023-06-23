@@ -7,7 +7,7 @@ export default function ProductCart({ sapato, addToCart, removeFromCart, carrinh
   const [verMais, setVerMais] = useState(false)
 
   return (
-    <div className="flex w-full md:w-3/4 max-w-5xl h-36 bg-red-500">
+    <div className="flex w-full md:w-3/4 max-w-5xl h-36">
       <div className="flex w-full gap-4 rounded-lg bg-slate-100">
         <div className="w-1/3">
           <img src={sapato.imagem}

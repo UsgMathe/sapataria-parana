@@ -7,9 +7,9 @@ export default function Button({ children, icon, onClick }) {
         <div className={`${icon && 'mr-2'} flex flex-col items-center justify-center`}>
           {icon && <img src={icon} className='mt-[3px] w-full' />}
         </div>
-        <p className="text-lg">
+        <div className="text-lg">
           {children}
-        </p>
+        </div>
       </div>
     </button>
   )

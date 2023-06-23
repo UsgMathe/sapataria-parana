@@ -4,9 +4,10 @@ import Button from "@/components/Button";
 import MainPage from "@/components/MainPage";
 import ProductCart from "@/components/ProductCart";
 import Cookies from "js-cookie";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { BiCart } from "react-icons/bi"
+import { BiCart, BiStoreAlt } from "react-icons/bi"
 
 export default function Loja() {
 
@@ -37,7 +38,11 @@ export default function Loja() {
             <header className="my-16  text-center">
                 <h1 className="text-7xl font-semibold">
                     <BiCart className="m-auto text-8xl my-2" />
-                    Carrinho
+                    {
+                        carrinho.length > 0 ?
+                            "Carrinho" : "Carrinho vazio"
+                    }
+
                 </h1>
                 <h3 className="py-4 text-4xl text-center font-light w-full">
 
@@ -46,10 +51,17 @@ export default function Loja() {
 
             <div className="flex flex-col justify-center items-center gap-4">
                 {
-                    carrinho.length > 0 &&
-                    carrinho.map((item, index) =>
-                        <ProductCart key={`${item.nome}-${index}`} sapato={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
-                    )
+                    carrinho.length > 0 ?
+                        carrinho.map((item, index) =>
+                            <ProductCart key={`${item.nome}-${index}`} sapato={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
+                        ) : <Link href={'/loja'}>
+                            <Button className="shadow-none">
+                                <p className="flex gap-2 justify-center items-center">
+                                    <BiStoreAlt />
+                                    Loja
+                                </p>
+                            </Button>
+                        </Link>
                 }
             </div>
 
