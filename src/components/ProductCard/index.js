@@ -22,7 +22,7 @@ export default function ProductCard({ sapato, addToCart, removeFromCart, carrinh
             <div className="w-full h-1/3">
               <p className="my-4 text-2xl text-center font-semibold text-gray-900">{sapato.nome}</p>
               <p className="my-2 font-normal text-justify overflow-y-scroll line-clamp-4 scroll-m-0 text-gray-700">{sapato.descricao}</p>
-              <p className="my-6 text-center text-4xl font-medium text-orange-500">{sapato.preco}</p>
+              <p className="my-6 text-center text-4xl font-medium text-orange-500">R${sapato.preco}</p>
             </div>
             <div className="p-2 m-auto mb-4" >
               {
@@ -48,7 +48,7 @@ export default function ProductCard({ sapato, addToCart, removeFromCart, carrinh
           />
         </div>
         <p className="m-2 text-center font-semibold text-gray-900">{sapato.nome}</p>
-        <p className="mt-2 text-center text-xl font-medium text-orange-500">{sapato.preco}</p>
+        <p className="mt-2 text-center text-xl font-medium text-orange-500">R${sapato.preco}</p>
         <div className="p-2 m-auto">
           <Button icon={'/images/adicionar-ao-carrinho-de-compras.png'} onClick={() => {
             addToCart(sapato)

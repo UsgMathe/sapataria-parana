@@ -15,6 +15,8 @@ export default function Loja() {
         Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
     )
 
+    const [total, setTotal] = useState(0)
+
     const handleRemoveFromCart = (item) => {
         console.log(item)
         let newCarrinho = carrinho
@@ -55,21 +57,28 @@ export default function Loja() {
                         carrinho.map((item, index) =>
                             <ProductCart key={`${item.nome}-${index}`} sapato={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
                         ) : <Link href={'/loja'}>
-                            <Button className="shadow-none">
-                                <p className="flex gap-2 justify-center items-center">
-                                    <BiStoreAlt />
+                            <Button icon={<BiStoreAlt />} className="shadow-none">
                                     Loja
-                                </p>
                             </Button>
                         </Link>
                 }
             </div>
 
-            {/* <div className="rounded-lg">
-                    <img src={sapatos[2].imagem}
-                        className="rounded-lg"   
-                    />
-                </div> */}
+            <div>
+                {
+                    carrinho.length > 0 &&
+                        carrinho.map((item) => 
+                        {setTotal(total + item.preco)}
+                    )
+                }
+
+                {
+                    carrinho.length >0 &&
+                    <p>
+                        Total: {total}
+                    </p>
+                }
+            </div>
         </MainPage>
     )
 }

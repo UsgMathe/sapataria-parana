@@ -14,25 +14,25 @@ export default function Loja() {
             nome: "Cinta Artesanal de Couro - Marrom (Com costura)",
             imagem: "/images/cintas/cinta-marrom-costura.jpg",
             descricao: "Apresentamos a você nossa elegante e durável Cinta Artesanal de Couro com Costura, um acessório indispensável para adicionar estilo e funcionalidade ao seu visual. Feita à mão com cuidado meticuloso e atenção aos detalhes, esta cinta oferece qualidade excepcional e um toque único que apenas o couro genuíno pode proporcionar.",
-            preco: "R$100"
+            preco: 100
         },
         {
             nome: "Cinta Artesanal de Couro - Preta (Com costura)",
             imagem: "/images/cintas/cinta-preta-costura.jpg",
             descricao: "Apresentamos a você nossa elegante e durável Cinta Artesanal de Couro com Costura, um acessório indispensável para adicionar estilo e funcionalidade ao seu visual. Feita à mão com cuidado meticuloso e atenção aos detalhes, esta cinta oferece qualidade excepcional e um toque único que apenas o couro genuíno pode proporcionar.",
-            preco: "R$100"
+            preco: 100
         },
         {
             nome: "Cinta Artesanal de Couro - Preta",
             imagem: "/images/cintas/cinta-preta.jpg",
             descricao: "Apresentamos a você nossa elegante e durável Cinta Artesanal de Couro, um acessório indispensável para adicionar estilo e funcionalidade ao seu visual. Feita à mão com cuidado meticuloso e atenção aos detalhes, esta cinta oferece qualidade excepcional e um toque único que apenas o couro genuíno pode proporcionar.",
-            preco: "R$80"
+            preco: 80
         },
         {
             nome: "Cinta Artesanal de Couro - Marrom",
             imagem: "/images/cintas/cinta-marrom.jpg",
             descricao: "Apresentamos a você nossa elegante e durável Cinta Artesanal de Couro, um acessório indispensável para adicionar estilo e funcionalidade ao seu visual. Feita à mão com cuidado meticuloso e atenção aos detalhes, esta cinta oferece qualidade excepcional e um toque único que apenas o couro genuíno pode proporcionar.",
-            preco: "R$80"
+            preco: 80
         },
 
     ]

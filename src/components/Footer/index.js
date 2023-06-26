@@ -1,5 +1,7 @@
 
 import Button from "../Button";
+import {PiFootprints} from 'react-icons/pi'
+import {BiPhoneCall} from 'react-icons/bi'
 
 export default function Footer() {
   return (
@@ -11,8 +13,8 @@ export default function Footer() {
             Contato
           </p>
           <p>(42) 3522-8950</p>
-          <a href="tel:+55-42-3522-8950">
-            <Button icon="/images/chamada-telefonica.png">Ligar</Button>
+          <a href="tel:+55-42-3522-8950" target="_blank">
+            <Button icon={<BiPhoneCall/>}>Ligar</Button>
           </a>
         </div>
 
@@ -24,9 +26,9 @@ export default function Footer() {
           <p>União da Vitória - PR</p>
           <p>84600-295</p>
           <p>Brasil</p>
-          <a href="https://www.google.com/maps/dir//Sapataria+Paran%C3%A1/data=!4m8!4m7!1m0!1m5!1m1!1s0x94e6614a381d6fff:0x19f365389a0ffa19!2m2!1d-51.0916639!2d-26.229326999999998">
+          <a href="https://www.google.com/maps/dir//Sapataria+Paran%C3%A1/data=!4m8!4m7!1m0!1m5!1m1!1s0x94e6614a381d6fff:0x19f365389a0ffa19!2m2!1d-51.0916639!2d-26.229326999999998" target="_blank">
 
-            <Button icon="/images/estampas-de-sapatos.png">Ver Rotas</Button>
+            <Button icon={<PiFootprints/>}>Ver Rotas</Button>
           </a>
         </div>
 

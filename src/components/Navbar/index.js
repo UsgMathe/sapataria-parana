@@ -16,7 +16,7 @@ export default function Navbar() {
             Sapataria Paraná
           </h1>
         </Link>
-        <ul className="sm:flex hidden justify-between gap-10 font-medium">
+        <ul className="md:flex hidden justify-between gap-10 font-medium">
           <Link className="hover:text-black transition-all duration-300" href={'/'} >
             <p className="flex justify-center items-center gap-3">
               <BiHomeAlt className="text-2xl" />
@@ -49,7 +49,7 @@ export default function Navbar() {
           </Link>
         </ul>
         {/* Futuro menu */}
-        <div className="sm:hidden">
+        <div className="md:hidden">
           <button className="w-5 h-5" onClick={() => setIsOpenMenu(!isOpenMenu)}>
             <img src="/images/menu-hamburguer.png" alt="ícone menu hamburguer" />
           </button>
