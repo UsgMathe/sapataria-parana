@@ -25,7 +25,7 @@ export default function Loja() {
         newCarrinho.forEach((carrinhoItem, index, object) => {
             if (carrinhoItem == item) {
                 newCarrinho.splice(index, 1)
-                setTotal(total-carrinhoItem.preco)
+                setTotal(total - carrinhoItem.preco)
             }
 
         });
@@ -36,10 +36,10 @@ export default function Loja() {
 
     useEffect(() => {
         console.log(carrinho)
-        if(carrinho.length > 0){
+        if (carrinho.length > 0) {
             let total_carrinho = 0
             carrinho.forEach(item => {
-                total_carrinho+=item.preco
+                total_carrinho += item.preco
             });
             setTotal(total_carrinho)
             setCarrinhoStatus("Carrinho")
@@ -68,7 +68,7 @@ export default function Loja() {
                             <ProductCart key={`${item.nome}-${index}`} item_carrinho={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
                         ) : <Link href={'/loja'}>
                             <Button icon={<BiStoreAlt />} className="shadow-none">
-                                    Loja
+                                Loja
                             </Button>
                         </Link>
                 }

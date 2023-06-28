@@ -61,32 +61,40 @@ export default function Home() {
   }, []);
 
   return (
-    <MainPage>
-      <div className="absolute -z-10 blur-sm w-screen h-44">
-        {
-          photoList && randomPhoto &&
-          <img key={randomPhoto.src} src={randomPhoto.src}
-            onLoad={() => {
-              setIsBgPhoto(false)
-              setBgPhoto(randomPhoto.src)
-              console.log('load')
-            }}
+    <>
+      <MainPage>
+        <div className="absolute -z-10 blur-sm w-screen h-44">
+          {
+            photoList && randomPhoto &&
+            <img key={randomPhoto.src} src={randomPhoto.src}
+              onLoad={() => {
+                setIsBgPhoto(false)
+                setBgPhoto(randomPhoto.src)
+                console.log('load')
+              }}
 
-            className={`${isBgPhoto ** 'hidden'} object-cover w-full h-full animate-[pulse_6s_infinite] transition-all duration-700`}
-          />
-        }
-      </div>
-      <div className="absolute -z-20 blur-sm w-screen h-44">
-        {
-          isBgPhoto &&
-          <img src={bgPhoto} alt="" className="object-cover w-full h-full animate-[pulse_6s_infinite]" />
-        }
-      </div>
-      <header className="flex flex-col items-center mt-12">
-        <h1 className=" text-4xl mb-2 font-semibold">Sapataria Paraná</h1>
-        <h2 className="">Consertos e Reparos de Sapatos em Geral</h2>
-      </header>
-
-    </MainPage>
+              className={`${isBgPhoto ** 'hidden'} object-cover w-full h-full animate-[pulse_6s_infinite] transition-all duration-700`}
+            />
+          }
+        </div>
+        <div className="absolute -z-20 blur-sm w-screen h-44">
+          {
+            isBgPhoto &&
+            <img src={bgPhoto} alt="" className="object-cover w-full h-full animate-[pulse_6s_infinite]" />
+          }
+        </div>
+        <div className="flex flex-col items-center mt-12">
+          <h1 className=" text-4xl mb-2 font-semibold">Sapataria Paraná</h1>
+          <h2 className="">Consertos e Reparos de Sapatos em Geral</h2>
+        </div>
+        <div className="flex flex-col bg-red-400 mt-44">
+          <div className="flex">
+            <h3>Reparo</h3>
+            <img src="/images/fotos/MVIMG_20230616_114323.jpg" alt="Reparo" />
+            <p>O reparo nos sapatos renovam sua aparencia e durabilidade</p>
+          </div>
+        </div>
+      </MainPage>
+    </>
   )
 }
