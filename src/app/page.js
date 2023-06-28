@@ -63,7 +63,7 @@ export default function Home() {
   return (
     <>
       <MainPage>
-        <div className="absolute -z-10 blur-sm w-screen h-44">
+        <div className="absolute -z-10 blur-sm bg-black/30 w-screen h-44">
           {
             photoList && randomPhoto &&
             <img key={randomPhoto.src} src={randomPhoto.src}
@@ -77,7 +77,7 @@ export default function Home() {
             />
           }
         </div>
-        <div className="absolute -z-20 blur-sm w-screen h-44">
+        <div className="absolute -z-20 blur-sm  w-screen h-44">
           {
             isBgPhoto &&
             <img src={bgPhoto} alt="" className="object-cover w-full h-full animate-[pulse_6s_infinite]" />
@@ -87,11 +87,18 @@ export default function Home() {
           <h1 className=" text-4xl mb-2 font-semibold">Sapataria Paraná</h1>
           <h2 className="">Consertos e Reparos de Sapatos em Geral</h2>
         </div>
-        <div className="flex flex-col bg-red-400 mt-44">
-          <div className="flex">
-            <h3>Reparo</h3>
-            <img src="/images/fotos/MVIMG_20230616_114323.jpg" alt="Reparo" />
-            <p>O reparo nos sapatos renovam sua aparencia e durabilidade</p>
+        <div className="flex flex-col bg-red-400/0 mt-24 w-full">
+          <h3 className="w-1/2 m-auto my-5 py-2 text-4xl text-center border-b-2 border-b-orange-500">Reparo</h3>
+          <div className="flex flex-col sm:flex-row gap-10 self-center">
+            <img src="/images/fotos/MVIMG_20230616_114323.jpg" alt="Reparo" className="w-full sm:w-56 h-56 m-auto object-cover rounded-xl border border-orange-500" />
+            <p className="text-justify self-center ">O reparo nos sapatos renovam sua aparencia e durabilidade</p>
+          </div>
+        </div>
+        <div className="flex flex-col bg-red-400/0 mt-24 w-full">
+          <h3 className="w-1/2 m-auto my-5 py-2 text-4xl text-center border-b-2 border-b-orange-500">Costura</h3>
+          <div className="flex flex-col sm:flex-row gap-10 self-center">
+            <p className="text-justify self-center">A costura nos sapatos renovam sua aparencia e durabilidade</p>
+            <img src="/images/fotos/IMG_20230616_114017.jpg" alt="Reparo" className="w-full sm:w-56 h-56 m-auto object-cover rounded-xl border border-orange-500" />
           </div>
         </div>
       </MainPage>
