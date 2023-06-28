@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Button from "../Button"
-
+import {BiCartAdd} from 'react-icons/bi'
 
 export default function ProductCard({ sapato, addToCart, removeFromCart, carrinho }) {
 
@@ -27,7 +27,7 @@ export default function ProductCard({ sapato, addToCart, removeFromCart, carrinh
             <div className="p-2 m-auto mb-4" >
               {
                 !carrinho ?
-                  <Button icon={'/images/adicionar-ao-carrinho-de-compras.png'} onClick={() => {
+                  <Button icon={<BiCartAdd/>} onClick={() => {
                     addToCart(sapato)
                     setVerMais(false)
                   }}>Carrinho</Button>
@@ -50,7 +50,7 @@ export default function ProductCard({ sapato, addToCart, removeFromCart, carrinh
         <p className="m-2 text-center font-semibold text-gray-900">{sapato.nome}</p>
         <p className="mt-2 text-center text-xl font-medium text-orange-500">R${sapato.preco}</p>
         <div className="p-2 m-auto">
-          <Button icon={'/images/adicionar-ao-carrinho-de-compras.png'} onClick={() => {
+          <Button icon={<BiCartAdd/>} onClick={() => {
             addToCart(sapato)
             setVerMais(false)
           }}>Carrinho</Button>

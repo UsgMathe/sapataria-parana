@@ -15,6 +15,8 @@ export default function Loja() {
         Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
     )
 
+    const [carrinhoStatus, setCarrinhoStatus] = useState('Carrinho')
+
     const [total, setTotal] = useState(0)
 
     const handleRemoveFromCart = (item) => {
@@ -23,6 +25,7 @@ export default function Loja() {
         newCarrinho.forEach((carrinhoItem, index, object) => {
             if (carrinhoItem == item) {
                 newCarrinho.splice(index, 1)
+                setTotal(total-carrinhoItem.preco)
             }
 
         });
@@ -33,6 +36,16 @@ export default function Loja() {
 
     useEffect(() => {
         console.log(carrinho)
+        if(carrinho.length > 0){
+            let total_carrinho = 0
+            carrinho.forEach(item => {
+                total_carrinho+=item.preco
+            });
+            setTotal(total_carrinho)
+            setCarrinhoStatus("Carrinho")
+        } else {
+            setCarrinhoStatus("Carrinho Vazio")
+        }
     }, carrinho)
 
     return (
@@ -40,10 +53,7 @@ export default function Loja() {
             <header className="my-16  text-center">
                 <h1 className="text-7xl font-semibold">
                     <BiCart className="m-auto text-8xl my-2" />
-                    {
-                        carrinho.length > 0 ?
-                            "Carrinho" : "Carrinho vazio"
-                    }
+                    {carrinhoStatus}
 
                 </h1>
                 <h3 className="py-4 text-4xl text-center font-light w-full">
@@ -55,7 +65,7 @@ export default function Loja() {
                 {
                     carrinho.length > 0 ?
                         carrinho.map((item, index) =>
-                            <ProductCart key={`${item.nome}-${index}`} sapato={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
+                            <ProductCart key={`${item.nome}-${index}`} item_carrinho={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
                         ) : <Link href={'/loja'}>
                             <Button icon={<BiStoreAlt />} className="shadow-none">
                                     Loja
@@ -67,15 +77,8 @@ export default function Loja() {
             <div>
                 {
                     carrinho.length > 0 &&
-                        carrinho.map((item) => 
-                        {setTotal(total + item.preco)}
-                    )
-                }
-
-                {
-                    carrinho.length >0 &&
-                    <p>
-                        Total: {total}
+                    <p className="mt-10 text-2xl">
+                        Total: R${total}
                     </p>
                 }
             </div>
