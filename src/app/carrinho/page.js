@@ -12,7 +12,7 @@ import { BiCart, BiStoreAlt } from "react-icons/bi"
 export default function Loja() {
 
     const getCart = () => {
-        const existingCart = localStorage.getItem('cart');
+        const existingCart = window.localStorage.getItem('cart');
         return existingCart ? JSON.parse(existingCart) : [];
     };
 

@@ -44,7 +44,7 @@ export default function Loja() {
     let cart = []
     const addToCart = (item) => {
         if (item) {
-            const carrinho_local = localStorage.getItem('cart')
+            const carrinho_local = window.localStorage.getItem('cart')
             const cart = carrinho_local ? JSON.parse(carrinho_local) : []
             const item_existente = cart.find((cartItem) => cartItem.nome === item.nome)
 
@@ -54,7 +54,7 @@ export default function Loja() {
                 item.qntd = 1
                 cart.push(item)
             }
-            localStorage.setItem('cart', JSON.stringify(cart))
+            window.localStorage.setItem('cart', JSON.stringify(cart))
             setCarrinho(cart)
         }
     }
