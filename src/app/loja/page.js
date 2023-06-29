@@ -42,13 +42,32 @@ export default function Loja() {
         Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
     )
 
-    const handleAddToCart = (sapato) => {
+    const handleAddToCart = (novo_item) => {
+        novo_item.qntd = 1
         console.log(carrinho)
-        setCarrinho([...carrinho, sapato])
+        if(carrinho){
+            const cookie_carrinho = Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
+            if(carrinho.length <= 0) {
+                setCarrinho([...carrinho, novo_item])
+            } else {
+                cookie_carrinho.forEach(item => {
+    
+                    if (item.nome == novo_item.nome){
+                            // novo_item.qntd = item.qntd + 1
+
+                            let new_carrinho = carrinho
+                            new_carrinho[new_carrinho.length - 1] = {...new_carrinho[new_carrinho.length -1], qntd:item.qntd + 1}
+                            setCarrinho([new_carrinho])
+                    } 
+                });
+            }
+            
+        }
     }
 
     useEffect(() => {
         carrinho && Cookies.set('carrinho', JSON.stringify(carrinho))
+        console.log(carrinho)
 
     }, [carrinho])
 

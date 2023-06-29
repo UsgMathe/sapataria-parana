@@ -19,7 +19,7 @@ export default function Footer() {
         </div>
 
         <div className="sm:mb-0 mb-10" >
-          <p className="text-xl font-semiboldi text-black mb-2">
+          <p className="text-xl font-semibold text-black mb-2">
             Endereço
           </p>
           <p>Rua Dom Pedro II, 703 - Centro</p>
@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
 
         <div className="sm:mb-0 mb-10">
-          <p className="text-xl font-semiboldi text-black mb-2">
+          <p className="text-xl font-semibold text-black mb-2">
             Horário de funcionamento
           </p>
           <p>
