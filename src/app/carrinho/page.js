@@ -46,7 +46,7 @@ export default function Loja() {
         if (carrinho.length > 0) {
             let total_carrinho = 0
             carrinho.forEach(item => {
-                total_carrinho += item.preco
+                total_carrinho += item.preco * item.qntd
             });
             setTotal(total_carrinho)
             setCarrinhoStatus("Carrinho")
