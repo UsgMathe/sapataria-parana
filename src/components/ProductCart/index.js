@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react"
 import Button from "../Button"
 
+import { BiTrash } from 'react-icons/bi'
+
 
 export default function ProductCart({ item_carrinho, addToCart, removeFromCart, carrinho }) {
 
   const [verMais, setVerMais] = useState(false)
   const [item, setItem] = useState({
-    item: item_carrinho.item,
+    nome: item_carrinho.nome,
     descricao: item_carrinho.descricao,
-    imagem: item_carrinho.imagem
+    imagem: item_carrinho.imagem,
+    qntd: item_carrinho.qntd
   })
 
   useEffect(() => {
     setItem({
-      item: item_carrinho.item,
+      nome: item_carrinho.nome,
       descricao: item_carrinho.descricao,
-      imagem: item_carrinho.imagem
+      imagem: item_carrinho.imagem,
+      qntd: item_carrinho.qntd
     })
+    console.log(item.qntd)
   }, [item_carrinho])
 
   return (
@@ -30,10 +35,16 @@ export default function ProductCart({ item_carrinho, addToCart, removeFromCart, 
         <div className="flex flex-col w-1/3">
           <p className="m-2 line-clamp-1 text-center font-semibold text-gray-900">{item.nome}</p>
           <p className="line-clamp-3 text-justify font-normal px-2 text-gray-700">{item.descricao}</p>
+          <div className="flex items-center justify-center">
+
+            <Button className="" onClick={_ => removeFromCart(item_carrinho)}>-</Button>
+            <p className="p-2 bg-red-200 text-black">{item.qntd}</p>
+            <Button className="" onClick={_ => removeFromCart(item_carrinho)}>+</Button>
+          </div>
         </div>
         <div className="w-1/3">
 
-          <Button className="" onClick={_ => removeFromCart(item_carrinho)}>Remover</Button>
+          <Button icon={<BiTrash />} className="" onClick={_ => removeFromCart(item_carrinho)} />
         </div>
 
       </div>

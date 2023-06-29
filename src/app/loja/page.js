@@ -37,39 +37,60 @@ export default function Loja() {
 
     ]
 
-
     const [carrinho, setCarrinho] = useState(
         Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
     )
 
-    const handleAddToCart = (novo_item) => {
-        novo_item.qntd = 1
-        console.log(carrinho)
-        if(carrinho){
-            const cookie_carrinho = Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
-            if(carrinho.length <= 0) {
-                setCarrinho([...carrinho, novo_item])
-            } else {
-                cookie_carrinho.forEach(item => {
-    
-                    if (item.nome == novo_item.nome){
-                            // novo_item.qntd = item.qntd + 1
+    let cart = []
+    const addToCart = (item) => {
+        if (item) {
+            const carrinho_local = localStorage.getItem('cart')
+            const cart = carrinho_local ? JSON.parse(carrinho_local) : []
+            const item_existente = cart.find((cartItem) => cartItem.nome === item.nome)
 
-                            let new_carrinho = carrinho
-                            new_carrinho[new_carrinho.length - 1] = {...new_carrinho[new_carrinho.length -1], qntd:item.qntd + 1}
-                            setCarrinho([new_carrinho])
-                    } 
-                });
+            if (item_existente) {
+                item_existente.qntd += 1
+            } else {
+                item.qntd = 1
+                cart.push(item)
             }
-            
+            localStorage.setItem('cart', JSON.stringify(cart))
+            setCarrinho(cart)
         }
     }
 
-    useEffect(() => {
-        carrinho && Cookies.set('carrinho', JSON.stringify(carrinho))
-        console.log(carrinho)
+    const removeFromCart = (item) => {
+        // reduzir quantidade, se for <= 1 remover
+    }
 
-    }, [carrinho])
+    const handleAddToCart = (novo_item) => {
+        novo_item.qntd = 1
+        console.log(carrinho)
+        if (carrinho) {
+            const cookie_carrinho = Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
+            if (carrinho.length <= 0) {
+                setCarrinho([...carrinho, novo_item])
+            } else {
+                cookie_carrinho.forEach(item => {
+
+                    if (item.nome == novo_item.nome) {
+                        // novo_item.qntd = item.qntd + 1
+
+                        let new_carrinho = carrinho
+                        new_carrinho[new_carrinho.length - 1] = { ...new_carrinho[new_carrinho.length - 1], qntd: item.qntd + 1 }
+                        setCarrinho([new_carrinho])
+                    }
+                });
+            }
+
+        }
+    }
+
+    // useEffect(() => {
+    //     carrinho && Cookies.set('carrinho', JSON.stringify(carrinho))
+    //     console.log(carrinho)
+
+    // }, [carrinho])
 
     return (
         <MainPage>
@@ -86,9 +107,10 @@ export default function Loja() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-16 max-w-4xl">
                 {
                     sapatos.map((sapato, index) =>
-                        <ProductCard key={`${sapato.nome}-${index}`} sapato={sapato} addToCart={(sapato) => handleAddToCart(sapato)} />
+                        <ProductCard key={`${sapato.nome}-${index}`} sapato={sapato} addToCart={(item) => addToCart(item)} />
                     )
                 }
+
 
             </div>
         </MainPage>

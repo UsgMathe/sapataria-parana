@@ -11,28 +11,35 @@ import { BiCart, BiStoreAlt } from "react-icons/bi"
 
 export default function Loja() {
 
-    const [carrinho, setCarrinho] = useState(
-        Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
-    )
+    const getCart = () => {
+        const existingCart = localStorage.getItem('cart');
+        return existingCart ? JSON.parse(existingCart) : [];
+    };
+
+    const removeFromCart = (item) => {
+
+    }
+
+    const [carrinho, setCarrinho] = useState(getCart())
 
     const [carrinhoStatus, setCarrinhoStatus] = useState('Carrinho')
 
     const [total, setTotal] = useState(0)
 
-    const handleRemoveFromCart = (item) => {
-        console.log(item)
-        let newCarrinho = carrinho
-        newCarrinho.forEach((carrinhoItem, index, object) => {
-            if (carrinhoItem == item) {
-                newCarrinho.splice(index, 1)
-                setTotal(total - carrinhoItem.preco)
-            }
+    // const handleRemoveFromCart = (item) => {
+    //     console.log(item)
+    //     let newCarrinho = carrinho
+    //     newCarrinho.forEach((carrinhoItem, index, object) => {
+    //         if (carrinhoItem == item) {
+    //             newCarrinho.splice(index, 1)
+    //             setTotal(total - carrinhoItem.preco)
+    //         }
 
-        });
+    //     });
 
-        Cookies.set('carrinho', JSON.stringify(newCarrinho))
-        setCarrinho(JSON.parse(Cookies.get('carrinho')))
-    }
+    //     Cookies.set('carrinho', JSON.stringify(newCarrinho))
+    //     setCarrinho(JSON.parse(Cookies.get('carrinho')))
+    // }
 
     useEffect(() => {
         console.log(carrinho)
@@ -65,7 +72,7 @@ export default function Loja() {
                 {
                     carrinho.length > 0 ?
                         carrinho.map((item, index) =>
-                            <ProductCart key={`${item.nome}-${index}`} item_carrinho={item} removeFromCart={(item) => handleRemoveFromCart(item)} carrinho={true} />
+                            <ProductCart key={`${item.nome}-${index}`} item_carrinho={item} removeFromCart={(item) => removeFromCart(item)} carrinho={true} />
                         ) : <Link href={'/loja'}>
                             <Button icon={<BiStoreAlt />} className="shadow-none">
                                 Loja
