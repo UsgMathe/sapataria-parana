@@ -9,12 +9,13 @@ import { useEffect, useState } from "react";
 
 import { BiCart, BiStoreAlt } from "react-icons/bi"
 
+const getCart = () => {
+    const existingCart = window.localStorage.getItem('cart');
+    return existingCart ? JSON.parse(existingCart) : [];
+};
+
 export default function Loja() {
 
-    const getCart = () => {
-        const existingCart = window.localStorage.getItem('cart');
-        return existingCart ? JSON.parse(existingCart) : [];
-    };
 
     const removeFromCart = (item) => {
 
