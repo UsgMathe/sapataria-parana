@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 import { BiCart, BiStoreAlt } from "react-icons/bi"
 
-const getCart = () => {
+export const getCart = () => {
     const existingCart = window.localStorage.getItem('cart');
     return existingCart ? JSON.parse(existingCart) : [];
 };

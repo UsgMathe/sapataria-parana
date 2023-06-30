@@ -9,7 +9,7 @@ import { BiStoreAlt } from 'react-icons/bi'
 
 let cart = []
 
-const addToCart = (item) => {
+export const addToCart = (item) => {
     if (item) {
         const carrinho_local = window.localStorage.getItem('cart')
         const cart = carrinho_local ? JSON.parse(carrinho_local) : []
@@ -21,8 +21,8 @@ const addToCart = (item) => {
             item.qntd = 1
             cart.push(item)
         }
-        window.localStorage.setItem('cart', JSON.stringify(cart))
         setCarrinho(cart)
+        return window.localStorage.setItem('cart', JSON.stringify(cart))
     }
 }
 
