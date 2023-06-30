@@ -6,7 +6,6 @@ import { BiTrash } from 'react-icons/bi'
 
 export default function ProductCart({ item_carrinho, addItem, decItem, removeFromCart }) {
 
-  const [verMais, setVerMais] = useState(false)
   const [item, setItem] = useState({
     nome: item_carrinho.nome,
     descricao: item_carrinho.descricao,
@@ -34,7 +33,7 @@ export default function ProductCart({ item_carrinho, addItem, decItem, removeFro
             className="rounded-lg object-cover w-full h-full self-start transition-all duration-300"
           />
         </div>
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-2/3">
           <p className="m-2 line-clamp-1 text-center font-semibold text-gray-900">{item.nome}</p>
           <p className="line-clamp-3 text-justify font-normal px-2 text-gray-700">{item.descricao}</p>
           <p className="p-2 text-2xl text-black">R${item.preco}</p>
