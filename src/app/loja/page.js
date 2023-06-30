@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import Button from "@/components/Button";
 import MainPage from "@/components/MainPage";
@@ -10,19 +10,21 @@ import { BiStoreAlt } from 'react-icons/bi'
 let cart = []
 
 export const addToCart = (item) => {
-    if (item) {
-        const carrinho_local = window.localStorage.getItem('cart')
-        const cart = carrinho_local ? JSON.parse(carrinho_local) : []
-        const item_existente = cart.find((cartItem) => cartItem.nome === item.nome)
+    if (typeof window !== 'undefined') {
+        if (item) {
+            const carrinho_local = window.localStorage.getItem('cart')
+            const cart = carrinho_local ? JSON.parse(carrinho_local) : []
+            const item_existente = cart.find((cartItem) => cartItem.nome === item.nome)
 
-        if (item_existente) {
-            item_existente.qntd += 1
-        } else {
-            item.qntd = 1
-            cart.push(item)
+            if (item_existente) {
+                item_existente.qntd += 1
+            } else {
+                item.qntd = 1
+                cart.push(item)
+            }
+
+            return window.localStorage.setItem('cart', JSON.stringify(cart))
         }
-        setCarrinho(cart)
-        return window.localStorage.setItem('cart', JSON.stringify(cart))
     }
 }
 
@@ -56,9 +58,9 @@ export default function Loja() {
 
     ]
 
-    const [carrinho, setCarrinho] = useState(
-        Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
-    )
+    // const [carrinho, setCarrinho] = useState(
+    //     Cookies.get('carrinho') ? JSON.parse(Cookies.get('carrinho')) : []
+    // )
 
     const removeFromCart = (item) => {
         // reduzir quantidade, se for <= 1 remover

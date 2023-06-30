@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import Button from "@/components/Button";
 import MainPage from "@/components/MainPage";
@@ -10,8 +10,11 @@ import { useEffect, useState } from "react";
 import { BiCart, BiStoreAlt } from "react-icons/bi"
 
 export const getCart = () => {
-    const existingCart = window.localStorage.getItem('cart');
-    return existingCart ? JSON.parse(existingCart) : [];
+    if (typeof window !== 'undefined') {
+        const existingCart = window.localStorage.getItem('cart');
+        return existingCart ? JSON.parse(existingCart) : [];
+    }
+    return []
 };
 
 export default function Loja() {
