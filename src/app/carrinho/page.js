@@ -77,7 +77,7 @@ export default function Loja() {
 
     const [carrinho, setCarrinho] = useState(getCart())
 
-    const [carrinhoStatus, setCarrinhoStatus] = useState('Carrinho')
+    const [carrinhoStatus, setCarrinhoStatus] = useState('Carregando carrinho...')
 
     const [total, setTotal] = useState(0)
 
@@ -114,8 +114,10 @@ export default function Loja() {
         <MainPage>
             <header className="my-16  text-center">
                 <h1 className="text-7xl font-semibold">
-                    <BiCart className="m-auto text-8xl my-2" />
-                    {carrinhoStatus}
+                    <BiCart className={`m-auto  my-2 text-8xl`} />
+                    <p className={`${carrinhoStatus === 'Carregando carrinho...' ? 'text-4xl' : 'text-6xl'}`}>
+                        {carrinhoStatus}
+                    </p>
 
                 </h1>
                 <h3 className="py-4 text-4xl text-center font-light w-full">
