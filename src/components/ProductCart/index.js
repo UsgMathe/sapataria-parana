@@ -1,29 +1,18 @@
+'use client'
+
 import { useEffect, useState } from "react"
 import Button from "../Button"
 
 import { BiTrash } from 'react-icons/bi'
 
 
-export default function ProductCart({ item_carrinho, addItem, decItem, removeFromCart }) {
+export default function ProductCart({ itemCarrinho, itemInicial, addItem, decItem, removeFromCart }) {
 
-  const [item, setItem] = useState({
-    nome: item_carrinho.nome,
-    descricao: item_carrinho.descricao,
-    imagem: item_carrinho.imagem,
-    qntd: item_carrinho.qntd,
-    preco: item_carrinho.preco
-  })
+  const [item, setItem] = useState(itemInicial)
 
   useEffect(() => {
-    setItem({
-      nome: item_carrinho.nome,
-      descricao: item_carrinho.descricao,
-      imagem: item_carrinho.imagem,
-      qntd: item_carrinho.qntd,
-      preco: item_carrinho.preco
-    })
-    console.log(item.qntd)
-  }, [item_carrinho])
+    setItem(itemCarrinho)
+  }, [itemCarrinho])
 
   return (
     <div className="flex flex-col sm:flex-row w-full sm:w-3/4 max-w-5xl ">
@@ -38,22 +27,16 @@ export default function ProductCart({ item_carrinho, addItem, decItem, removeFro
           <p className="line-clamp-3 text-justify font-normal px-2 text-gray-700">{item.descricao}</p>
           <p className="p-2 text-2xl text-black">R${item.preco}</p>
           <div className="flex items-center gap-6 justify-around">
-            <button className="px-4 rounded-md text-2xl font-bold bg-orange-500" onClick={_ => decItem(item_carrinho)}>
+            <button className="px-4 rounded-md text-2xl font-bold bg-orange-500" onClick={_ => decItem(itemInicial)}>
               -
             </button>
             <p className="p-2 text-black">{item.qntd}</p>
-            <button className="px-4 rounded-md text-2xl font-bold bg-orange-500" onClick={_ => addItem(item_carrinho)}>
+            <button className="px-4 rounded-md text-2xl font-bold bg-orange-500" onClick={_ => addItem(itemInicial)}>
               +
             </button>
-            {/* <Button className="w-10" onClick={_ => removeFromCart(item_carrinho)}>-</Button> */}
-            <Button icon={<BiTrash />} className="" onClick={_ => removeFromCart(item_carrinho)} />
+            <Button icon={<BiTrash />} className="" onClick={_ => removeFromCart(itemInicial)} />
           </div>
         </div>
-        {/* <div className="w-1/3"> */}
-
-
-        {/* </div> */}
-
       </div>
     </div>
   )

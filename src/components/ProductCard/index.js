@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react"
 import Button from "../Button"
-import {BiCartAdd} from 'react-icons/bi'
+import { BiCartAdd } from 'react-icons/bi'
 
-export default function ProductCard({ sapato, addToCart, removeFromCart, carrinho }) {
+export default function ProductCard({ sapato, addToCart }) {
 
   const [verMais, setVerMais] = useState(false)
 
   return (
     <>
-      <div className={`${!verMais && "scale-0"} fixed top-0 bottom-0 right-0 left-0 flex items-center justify-center  m-0 p-10 backdrop-blur-[3px] bg-black/40 z-10`} onClick={() => setVerMais(false)}>
+      <div className={`${!verMais && "scale-0"} fixed top-0 bottom-0 right-0 left-0 flex flex-col items-center justify-center  m-0 p-10 h-full backdrop-blur-[3px] bg-black/40 z-10`} onClick={() => setVerMais(false)}>
 
-        <div className={`w-full h-full sm:h-4/5 md:h-3/5 max-w-xl rounded-lg ${verMais ? 'scale-100' : 'scale-0'} transition-all duration-500 z-50 overflow-y-scroll no-scrollbar`} >
+        <div className={`w-full h-[90%] max-w-xl rounded-lg ${verMais ? 'scale-100' : 'scale-0'} transition-all duration-500 z-50 overflow-y-scroll `} >
           <img className="absolute right-0 m-4 w-10 cursor-pointer z-50 " onClick={() => setVerMais(false)} src="/images/cross.png" alt="fechar" />
-          <div key={sapato.nome} className="flex flex-col justify-center items-center rounded-2xl border-2 w-full  bg-slate-100  transition-all duration-300 px-10" >
+          <div key={sapato.nome} className="flex flex-col justify-center items-center rounded-2xl border-2 w-full bg-slate-100  transition-all duration-300 px-10 self-center" >
             <div className={`h-1/2 mt-16 `}>
 
               <img src={sapato.imagem}
@@ -25,18 +25,10 @@ export default function ProductCard({ sapato, addToCart, removeFromCart, carrinh
               <p className="my-6 text-center text-4xl font-medium text-orange-500">R${sapato.preco}</p>
             </div>
             <div className="p-2 m-auto mb-4" >
-              {
-                !carrinho ?
-                  <Button icon={<BiCartAdd/>} onClick={() => {
-                    addToCart(sapato)
-                    setVerMais(false)
-                  }}>Carrinho</Button>
-                  :
-                  <Button onClick={() => {
-                    removeFromCart(sapato)
-                    setVerMais(false)
-                  }}>Remover</Button>
-              }
+              <Button icon={<BiCartAdd />} onClick={() => {
+                addToCart(sapato)
+                setVerMais(false)
+              }}>Carrinho</Button>
             </div>
           </div>
         </div>
@@ -50,7 +42,7 @@ export default function ProductCard({ sapato, addToCart, removeFromCart, carrinh
         <p className="m-2 text-center font-semibold text-gray-900">{sapato.nome}</p>
         <p className="mt-2 text-center text-xl font-medium text-orange-500">R${sapato.preco}</p>
         <div className="p-2 m-auto">
-          <Button icon={<BiCartAdd/>} onClick={() => {
+          <Button icon={<BiCartAdd />} onClick={() => {
             addToCart(sapato)
             setVerMais(false)
           }}>Carrinho</Button>

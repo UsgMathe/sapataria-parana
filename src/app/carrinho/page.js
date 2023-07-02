@@ -108,7 +108,7 @@ export default function Loja() {
         } else {
             setCarrinhoStatus("Carrinho Vazio")
         }
-    }, carrinho)
+    }, [carrinho])
 
     return (
         <MainPage>
@@ -129,7 +129,19 @@ export default function Loja() {
                 {
                     carrinho.length > 0 ?
                         carrinho.map((item, index) =>
-                            <ProductCart key={`${item.nome}-${index}`} item_carrinho={item} removeFromCart={(item) => setCarrinho(removeFromCart(item))} addItem={(item) => setCarrinho(addQntdItemCart(item))} decItem={item => setCarrinho(reduceQntdItemCart(item))} carrinho={true} />
+                            <ProductCart key={`${item.nome}-${index}`}
+                                itemCarrinho={item}
+                                itemInicial={{
+                                    nome: item.nome,
+                                    descricao: item.descricao,
+                                    imagem: item.imagem,
+                                    qntd: item.qntd,
+                                    preco: item.preco
+                                }}
+                                addItem={(item) => setCarrinho(addQntdItemCart(item))}
+                                decItem={item => setCarrinho(reduceQntdItemCart(item))}
+                                removeFromCart={(item) => setCarrinho(removeFromCart(item))}
+                            />
                         ) : <Link href={'/loja'}>
                             <Button icon={<BiStoreAlt />} className="shadow-none">
                                 Loja
